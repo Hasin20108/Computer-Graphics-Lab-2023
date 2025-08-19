@@ -5,10 +5,9 @@
 import pygame
 import sys
 
-# ---------- Functions ----------
 def draw_polygon(screen, color, x, y):
     points = [(x[i], y[i]) for i in range(len(x))]
-    pygame.draw.polygon(screen, color, points, 1)
+    pygame.draw.polygon(screen, color, points, 3)
 
 def translate_polygon(x, y, tx, ty):
     for i in range(len(x)):
@@ -16,28 +15,22 @@ def translate_polygon(x, y, tx, ty):
         y[i] += ty
 
 
-# ---------- Main ----------
 def main():
-    # ------- Input -------
     data = list(map(int, input().split()))
-    n = data[0]                          # number of vertices
-    x = data[1:2*n+1:2]                  # x coords
-    y = data[2:2*n+1:2]                  # y coords
-    tx, ty = data[2*n+1], data[2*n+2]    # translation factors
+    n = data[0]                          
+    x = data[1:2*n+1:2]                  
+    y = data[2:2*n+1:2]                  
+    tx, ty = data[2*n+1], data[2*n+2]    
 
-    # ------- Pygame Setup -------
     pygame.init()
     screen = pygame.display.set_mode((600, 600))
     pygame.display.set_caption("Polygon Translation")
     screen.fill((255, 255, 255))
 
-    # Draw original polygon (WHITE)
     draw_polygon(screen, (0, 0, 0), x[:], y[:])
 
-    # Apply translation
     translate_polygon(x, y, tx, ty)
 
-    # Draw translated polygon (YELLOW)
     draw_polygon(screen, (255, 0, 0), x, y)
 
     pygame.display.flip()
@@ -50,6 +43,5 @@ def main():
                 sys.exit()
 
 
-# Run program
 if __name__ == "__main__":
     main()

@@ -7,7 +7,7 @@ import sys
 # ---------- Functions ----------
 def draw_polygon(screen, color, x, y):
     points = [(x[i], y[i]) for i in range(len(x))]
-    pygame.draw.polygon(screen, color, points, 1)
+    pygame.draw.polygon(screen, color, points, 3)
 
 def scale_polygon(x, y, n, sfx, sfy):
     for i in range(n):
@@ -30,13 +30,10 @@ def main():
     pygame.display.set_caption("Polygon Scaling")
     screen.fill((255, 255, 255))
 
-    # Draw original polygon (WHITE)
     draw_polygon(screen, (0, 0, 0), x[:], y[:])
 
-    # Scale polygon
     scale_polygon(x, y, n, sfx, sfy)
 
-    # Draw scaled polygon (YELLOW)
     draw_polygon(screen, (255, 0, 0), x, y)
 
     pygame.display.flip()

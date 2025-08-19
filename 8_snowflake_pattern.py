@@ -30,7 +30,7 @@ def snowflake(screen, x1, y1, x5, y5, iteration, color=(0, 0, 0)):
 # ---------- Main ----------
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((600, 600))
+    screen = pygame.display.set_mode((800, 800))
     iteration = 4
     pygame.display.set_caption(f"Snowflake Pattern With {iteration} iterations")
     screen.fill((255, 255, 255))  # White background

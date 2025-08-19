@@ -1,7 +1,6 @@
 import pygame
 import sys
 
-# ---------- Midpoint Circle Algorithm ----------
 def draw_circle(screen, xc, yc, radius, color=(0, 0, 0)):
     points = []
     x = 0
@@ -29,14 +28,14 @@ def draw_circle(screen, xc, yc, radius, color=(0, 0, 0)):
 # ---------- Main ----------
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((500, 500))
+    screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("Midpoint Circle Drawing")
 
     # White background
     screen.fill((255, 255, 255))
 
     # Example circle (black)
-    xc, yc, radius = 200, 200, 150
+    xc, yc, radius = 400, 400, 150
     draw_circle(screen, xc, yc, radius, (0, 0, 0))
 
     pygame.display.flip()

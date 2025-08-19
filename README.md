@@ -13,3 +13,4 @@
 - **Clip polygon with the Sutherland Hodgman Polygon Clipping algorithm** 
 - **Create a Bejier Curve ✓**
 - **Draw the Snowflake Pattern with Fractal Geometry ✓**
+- **Hidden Surface Elimination or Visual Surface Detection ✓**

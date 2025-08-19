@@ -1,15 +1,14 @@
 # Sample Input: 
-# 4 100 100 100 200 200 200 200 100 45 200 200
+# 4 100 100 100 200 200 200 200 100 30 200 200
 
 
 import pygame
 import sys
 import math
 
-# ---------- Functions ----------
 def draw_polygon(screen, color, x, y):
     points = [(x[i], y[i]) for i in range(len(x))]
-    pygame.draw.polygon(screen, color, points, 1)
+    pygame.draw.polygon(screen, color, points, 3)
 
 def rotate_polygon(x, y, n, angle, xp, yp):
     radian = math.radians(angle)
@@ -23,30 +22,28 @@ def rotate_polygon(x, y, n, angle, xp, yp):
         y[i] = yp + (x_shift * sin_t) + (y_shift * cos_t)
 
 
-# ---------- Main ----------
 def main():
-    # ------- Input -------
     data = list(map(int, input().split()))
-    n = data[0]                          # number of vertices
-    x = data[1:2*n+1:2]                  # x coords
-    y = data[2:2*n+1:2]                  # y coords
-    angle = data[2*n+1]                  # rotation angle
-    x_pivot, y_pivot = data[2*n+2], data[2*n+3]  # pivot point
+    n = data[0]                          
+    x = data[1:2*n+1:2]                  
+    y = data[2:2*n+1:2]                  
+    angle = data[2*n+1]                  
+    x_pivot, y_pivot = data[2*n+2], data[2*n+3]  
 
-    # ------- Pygame Setup -------
     pygame.init()
     screen = pygame.display.set_mode((600, 600))
     pygame.display.set_caption("Polygon Rotation")
     screen.fill((255, 255, 255))
 
-    # Draw original polygon (WHITE)
     draw_polygon(screen, (0, 0, 0), x[:], y[:])
 
-    # Rotate polygon
     rotate_polygon(x, y, n, angle, x_pivot, y_pivot)
 
-    # Draw rotated polygon (YELLOW)
     draw_polygon(screen, (255, 0, 0), x, y)
+
+    rotate_polygon(x, y, n, angle, x_pivot, y_pivot)
+    draw_polygon(screen, (0, 0, 255), x, y)
+
 
     pygame.display.flip()
 

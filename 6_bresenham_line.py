@@ -22,19 +22,21 @@ def draw_line(screen, x1, y1, x2, y2, color=(0, 0, 0)):
         else:
             p += 2 * dy
 
+    
+        
 
 # ---------- Main ----------
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((500, 500))
+    screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("Bresenham Line Drawing")
 
     # White background
     screen.fill((255, 255, 255))
 
     # Example line (black)
-    x1, y1 = 100, 100
-    x2, y2 = 400, 370
+    x1, y1 = 300, 300
+    x2, y2 = 700, 670
     draw_line(screen, x1, y1, x2, y2, (0, 0, 0))
 
     pygame.display.flip()
