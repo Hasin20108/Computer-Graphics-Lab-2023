@@ -17,7 +17,6 @@ def draw_circle(screen, xc, yc, radius, color=(0, 0, 0)):
         else:
             p += 2 * x + 1
 
-    # Plot all 8 symmetric points
     for v in points:
         screen.set_at((xc + v[0], yc + v[1]), color)
         screen.set_at((xc - v[0], yc + v[1]), color)
@@ -25,22 +24,18 @@ def draw_circle(screen, xc, yc, radius, color=(0, 0, 0)):
         screen.set_at((xc - v[0], yc - v[1]), color)
 
 
-# ---------- Main ----------
 def main():
     pygame.init()
     screen = pygame.display.set_mode((800, 800))
-    pygame.display.set_caption("Midpoint Circle Drawing")
+    pygame.display.set_caption("Bresenham Circle Drawing")
 
-    # White background
     screen.fill((255, 255, 255))
 
-    # Example circle (black)
-    xc, yc, radius = 400, 400, 150
+    xc, yc, radius = 400, 400, 250
     draw_circle(screen, xc, yc, radius, (0, 0, 0))
 
     pygame.display.flip()
 
-    # Keep window open until closed
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

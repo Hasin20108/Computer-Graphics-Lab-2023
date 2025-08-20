@@ -1,10 +1,9 @@
 # Sample Input:
-# 4 100 100 100 150 150 150 150 100 2 2
+# 4 150 150 150 250 250 250 250 150 2 2
 
 import pygame
 import sys
 
-# ---------- Functions ----------
 def draw_polygon(screen, color, x, y):
     points = [(x[i], y[i]) for i in range(len(x))]
     pygame.draw.polygon(screen, color, points, 3)
@@ -15,18 +14,15 @@ def scale_polygon(x, y, n, sfx, sfy):
         y[i] = y[i] * sfy
 
 
-# ---------- Main ----------
 def main():
-    # ------- Input -------
     data = list(map(int, input().split()))
-    n = data[0]                          # number of vertices
-    x = data[1:2*n+1:2]                  # x coords
-    y = data[2:2*n+1:2]                  # y coords
-    sfx, sfy = data[2*n+1], data[2*n+2]  # scaling factors
+    n = data[0]                          
+    x = data[1:2*n+1:2]                  
+    y = data[2:2*n+1:2]                  
+    sfx, sfy = data[2*n+1], data[2*n+2]  
 
-    # ------- Pygame Setup -------
     pygame.init()
-    screen = pygame.display.set_mode((600, 600))
+    screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("Polygon Scaling")
     screen.fill((255, 255, 255))
 
@@ -38,7 +34,6 @@ def main():
 
     pygame.display.flip()
 
-    # Keep window open until closed
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -46,6 +41,5 @@ def main():
                 sys.exit()
 
 
-# Run program
 if __name__ == "__main__":
     main()

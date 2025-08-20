@@ -1,15 +1,12 @@
 import pygame
 import sys
 
-# ---------- Clipping Window ----------
 x_left, x_right = 120, 500
 y_bottom, y_top = 100, 350
 
-# Region codes
 LEFT, RIGHT, BOTTOM, TOP = 1, 2, 4, 8
 
 
-# ---------- Functions ----------
 def region_code(x, y):
     code = 0
     if x > x_right:
@@ -28,12 +25,12 @@ def cohen_sutherland(screen, x1, y1, x2, y2, color=(255, 255, 255)):
     code2 = region_code(x2, y2)
 
     while True:
-        if not (code1 | code2):  # Line is completely inside
+        if not (code1 | code2): 
             pygame.draw.line(screen, color, (int(x1), int(y1)), (int(x2), int(y2)))
             return
-        elif code1 & code2:  # Line is completely outside
+        elif code1 & code2:  
             return
-        else:  # Line is partially inside
+        else:  
             if code1:
                 code = code1
             else:
@@ -60,26 +57,21 @@ def cohen_sutherland(screen, x1, y1, x2, y2, color=(255, 255, 255)):
                 code2 = region_code(x2, y2)
 
 
-# ---------- Main ----------
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((600, 500))
+    screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("Cohen-Sutherland Line Clipping")
     screen.fill((255, 255, 255))
 
-    # Draw clipping rectangle (YELLOW)
     pygame.draw.rect(screen, (0, 255, 0),
-                     pygame.Rect(x_left, y_bottom, x_right - x_left, y_top - y_bottom), 1)
+                     pygame.Rect(x_left, y_bottom, x_right - x_left, y_top - y_bottom), 3)
 
-    # Original line (RED)
     pygame.draw.line(screen, (255, 0, 0), (50, 200), (500, 400))
 
-    # Clipped line (WHITE)
     cohen_sutherland(screen, 50, 200, 500, 400, (0, 0, 255))
 
     pygame.display.flip()
 
-    # Keep window open until closed
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

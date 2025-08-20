@@ -1,10 +1,8 @@
 import pygame
 import sys
 
-# ---------- Clipping Window ----------
 clip_window = [(150, 150), (450, 150), (450, 350), (150, 350)]  # Rectangle
 
-# ---------- Sutherland-Hodgman Functions ----------
 def inside(p, edge_start, edge_end):
     """Check if point p is inside relative to an edge."""
     (x, y) = p
@@ -20,12 +18,10 @@ def compute_intersection(p1, p2, e1, e2):
     x3, y3 = e1
     x4, y4 = e2
 
-    # Line (p1,p2) represented as a1x + b1y = c1
     a1 = y2 - y1
     b1 = x1 - x2
     c1 = a1 * x1 + b1 * y1
 
-    # Line (e1,e2)
     a2 = y4 - y3
     b2 = x3 - x4
     c2 = a2 * x3 + b2 * y3
@@ -65,32 +61,25 @@ def suth_hodg_clip(subject_polygon, clip_window):
     return output_list
 
 
-# ---------- Main ----------
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((600, 500))
+    screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("Sutherland-Hodgman Polygon Clipping")
     screen.fill((255, 255, 255))
 
-    # Subject polygon (triangle crossing window)
     subject_polygon = [(100, 100), (500, 200), (300, 400)]
 
-    # Draw clipping window (YELLOW)
-    pygame.draw.polygon(screen, (255, 255, 0), clip_window, 2)
+    pygame.draw.polygon(screen, (255, 0, 0), clip_window, 2)
 
-    # Draw original subject polygon (RED outline)
-    pygame.draw.polygon(screen, (255, 0, 0), subject_polygon, 2)
+    pygame.draw.polygon(screen, (0, 0, 0), subject_polygon, 2)
 
-    # Clip polygon
     clipped_polygon = suth_hodg_clip(subject_polygon, clip_window)
 
-    # Draw clipped polygon (GREEN filled)
     if clipped_polygon:
-        pygame.draw.polygon(screen, (0, 200, 0), clipped_polygon, 0)
+        pygame.draw.polygon(screen, (150, 150, 150), clipped_polygon, 0)
 
     pygame.display.flip()
 
-    # Keep window open until closed
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

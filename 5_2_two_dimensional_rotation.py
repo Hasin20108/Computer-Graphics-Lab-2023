@@ -1,5 +1,5 @@
 # Sample Input: 
-# 4 100 100 100 200 200 200 200 100 30 200 200
+# 4 300 300 300 500 500 500 500 300 30 500 500
 
 
 import pygame
@@ -31,7 +31,7 @@ def main():
     x_pivot, y_pivot = data[2*n+2], data[2*n+3]  
 
     pygame.init()
-    screen = pygame.display.set_mode((600, 600))
+    screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("Polygon Rotation")
     screen.fill((255, 255, 255))
 
@@ -47,13 +47,11 @@ def main():
 
     pygame.display.flip()
 
-    # Keep window open until closed
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
-# Run program
 if __name__ == "__main__":
     main()

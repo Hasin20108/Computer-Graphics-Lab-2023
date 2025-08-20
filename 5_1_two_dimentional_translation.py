@@ -23,7 +23,7 @@ def main():
     tx, ty = data[2*n+1], data[2*n+2]    
 
     pygame.init()
-    screen = pygame.display.set_mode((600, 600))
+    screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("Polygon Translation")
     screen.fill((255, 255, 255))
 
@@ -35,7 +35,6 @@ def main():
 
     pygame.display.flip()
 
-    # Keep window open until closed
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
